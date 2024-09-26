@@ -16,7 +16,7 @@ export default function WalletButton({
 }: {
   isLoading: boolean;
   isConnect: boolean;
-  handleGetNonce?: () => void;
+  handleGetNonce: () => void;
 }) {
   const { setVisible: setModalVisible } = useWalletModal();
   const { publicKey, onDisconnect } = useWalletMultiButton({
@@ -26,8 +26,11 @@ export default function WalletButton({
   });
   const handleLogin = () => {
     try {
-      setModalVisible(true);
-
+      if (!publicKey) {
+        setModalVisible(true);
+      } else {
+        handleGetNonce();
+      }
     } catch (error) {}
   };
 

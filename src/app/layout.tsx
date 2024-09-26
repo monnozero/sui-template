@@ -5,6 +5,7 @@ import SolWalletProvider from "@/providers/SolWalletProvider";
 import AppProvider from "@/providers/AppProvider";
 import { cookies } from "next/headers";
 import "@solana/wallet-adapter-react-ui/styles.css";
+import { Toaster } from "@/components/ui/toaster";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -29,7 +30,7 @@ export default function RootLayout({
       <body className={inter.className}>
       <SolWalletProvider>
           <AppProvider initialAccessToken={accessToken?.value} user={user}>
-         
+          <Toaster />
           {children}
          
         
