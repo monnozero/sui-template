@@ -1,4 +1,5 @@
 import KolView from "@/app/(landing)/KolView";
+import Header from "@/components/shared/Header";
 import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,8 +8,9 @@ export default function Home() {
   const cookieStore = cookies();
   const accessToken = cookieStore.get("accessToken");
   return (
-    <div className="relative h-[100vh] flex items-center justify-center bg-[url('/BackgroundImage.png')] bg-no-repeat bg-cover bg-center">
-          
+    <div>
+           <Header/>
+           <div className="relative h-[100vh] flex items-center justify-center bg-[url('/BackgroundImage.png')] bg-no-repeat bg-cover bg-center">
           <div className="max-w-screen-sm w-full flex flex-col items-center justify-center gap-20">
             <div className="relative w-[240px] h-[240px]">
               <Image
@@ -38,6 +40,8 @@ export default function Home() {
             </div>
           
           </div>
+    </div>
+    
        
   );
 }
