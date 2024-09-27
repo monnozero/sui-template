@@ -1,20 +1,14 @@
 'use client'
-import authApiRequest from "@/apiRequest/auth";
+
 import CloseIcon from "@/assets/CloseIcon";
 import GoogleIcon from "@/assets/GoogleIcon";
 import TelegramIcon from "@/assets/TelegramIcon";
 import TwitterIcon from "@/assets/TwitterIcon";
 import WalletButton from "@/components/shared/WalletButton";
-
 import { Checkbox } from "@/components/ui/checkbox";
-import getProviderPhantom from "@/hooks/getProviderPhantom";
-import { toast } from "@/hooks/use-toast";
 import useLogin from "@/hooks/useLogin";
-import { useWallet } from "@solana/wallet-adapter-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
-import { decodeUTF8 } from "tweetnacl-util";
+import React from "react";
 
 
 const LoginPage = () => {

@@ -1,4 +1,5 @@
 
+import { toast } from "@/hooks/use-toast";
 import { normalizePath } from "@/lib/utils";
 // import { LoginResType } from "@/schemaValidations/auth.schema";
 import { redirect } from "next/navigation";
@@ -143,14 +144,25 @@ const request = async <Response>(
 
   //Interceptor la noi chung ta xu ly request va response truoc khi tra ve cho phia component
   if (!res.ok) {
-    if (res.status === ENTITY_ERROR_STATUS) {
+    if (res.status === 403) {
+      
+      toast({
+        variant: "destructive",
+        className:'z-50',
+        description:"The user has not granted permission to this app."
+      })
+    
+    } 
+    
+   else if (res.status === ENTITY_ERROR_STATUS) {
       throw new EntityError(
         data as {
           status: 422;
           payload: EntityErrorPayload;
         }
       );
-    } else if (res.status === AUTHENTICATION_ERROR_STATUS) {
+    }
+    else if (res.status === AUTHENTICATION_ERROR_STATUS) {
       if (typeof window !== "undefined") {
         if (!clientLogoutRequest) {
           clientLogoutRequest = fetch("/api/auth/logout", {

@@ -106,7 +106,8 @@ const useLogin = () => {
                 className: "z-50 ",
                 description: "Your account is not register",
               });
-              // setAuthenToken(responseVerify.payload.data.authen_token);
+              setIsLoading(false);
+             
             }
           }
         } catch (error) {
@@ -140,11 +141,7 @@ const useLogin = () => {
         });
       }
   
-      return () => {
-        if (provider && provider.isPhantom) {
-          provider.disconnect();
-        }
-      };
+     
     }, []);
     return {
       isLoading,
