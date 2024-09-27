@@ -12,21 +12,19 @@ import { LoadingButton } from "@/components/ui/loading-button";
 export default function WalletButton({
   isLoading,
   isConnect,
+  currentPublicKey,
   handleGetNonce,
 }: {
   isLoading: boolean;
   isConnect: boolean;
+  currentPublicKey: any;
   handleGetNonce: () => void;
 }) {
   const { setVisible: setModalVisible } = useWalletModal();
-  const { publicKey, onDisconnect } = useWalletMultiButton({
-    onSelectWallet() {
-      setModalVisible(true);
-    },
-  });
+ 
   const handleLogin = () => {
     try {
-      if (!publicKey) {
+      if (!currentPublicKey) {
         setModalVisible(true);
       } else {
         handleGetNonce();
@@ -43,8 +41,8 @@ export default function WalletButton({
         className="bg-gradient-to-r from-[#8737E9] to-[#3AE7E7]  rounded-xl w-full h-[56px] text-base font-bold flex items-center justify-center gap-2 text-white cursor-pointer"
       >
         {!isLoading && <WalletIcon />}
-        {publicKey ? (
-          "Verify your wallet" + " " + sliceAddressWallet(publicKey)
+        {currentPublicKey ? (
+          "Verify your wallet" + " " + sliceAddressWallet(currentPublicKey)
         ) : (
           <p>Connect your wallet</p>
         )}
