@@ -12,7 +12,7 @@ const KolView = () => {
   console.log("🚀 ~ KolView ~ data:", data);
 
   const appId =
-    "be94da783e0ee11bbdb9de2f9c6745f15b1f9bfc3007dab7f77ec2eed2400b05";
+    "a08f625253bf98275a6521c84bc37b87112f46058c18cf37008c3e9c73904547";
 
   const { data: platsAppData } = useSWR(
     data

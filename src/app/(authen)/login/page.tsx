@@ -1,20 +1,21 @@
 'use client'
-
 import CloseIcon from "@/assets/CloseIcon";
 import GoogleIcon from "@/assets/GoogleIcon";
 import TelegramIcon from "@/assets/TelegramIcon";
 import TwitterIcon from "@/assets/TwitterIcon";
 import WalletButton from "@/components/shared/WalletButton";
+
 import { Checkbox } from "@/components/ui/checkbox";
 import useLogin from "@/hooks/useLogin";
+
 import Image from "next/image";
 import React from "react";
 
 
-const LoginPage = () => {
 
-  const {isConnect, currentPublicKey, isLoading,handleGetNonce,setIsConnect} = useLogin()
-  
+const LoginPage = () => {
+  const { handleGetNonce, isConnect, isLoading, setIsConnect} = useLogin()
+
 
   
   return (
@@ -57,7 +58,7 @@ const LoginPage = () => {
             </div>
 
             <div className=" ">
-              <WalletButton isConnect={isConnect} isLoading={isLoading} handleGetNonce={handleGetNonce} currentPublicKey={currentPublicKey} />
+              <WalletButton isConnect={isConnect} isLoading={isLoading} handleGetNonce={handleGetNonce} />
 
               <div className="w-full flex flex-col gap-5">
                 <div className="flex gap-[10px] pt-4">
@@ -93,16 +94,6 @@ const LoginPage = () => {
         </div>
       </div>
 
-      {/* <div className="relative  h-full">
-      <div
-        className="absolute inset-0  opacity-5 shadow w-full max-w-6xl m-auto rounded-2xl"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(25,5,50,1),rgba(102,255,255,1) 0%)",
-        }}
-      ></div>
-     
-    </div> */}
     </div>
   );
 };
